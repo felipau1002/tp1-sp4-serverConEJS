@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Superheroe</title>
+</head>
+<style>
+    body{
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #001233;
+            color: #0466c8;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        h1{
+            color: #f4f4f4;
+            text-align: center;
+            margin: 45px 0px;
+        }
+        .heroes{
+            background-color: #000814;
+            width: 500px;
+            text-align: center;
+            padding-bottom: 25px;
+            border-radius: 25px;
+            overflow: hidden;
+            padding: 30px 0px;
+        }
+        .heroes1{
+            display: flex;
+            justify-content: space-evenly;
+            margin-top: 25px;
+            border: none;
+            align-items: center;
+            margin-bottom: 0;
+        }
+        div{
+            margin-top: 25px;
+            margin-bottom: 40px;
+            border-bottom: 2px solid #0466c8;
+        }
+        input{
+            margin-top: 15px;
+            margin-bottom: 30px;
+            background-color: #03045e;
+            border: none;
+            width: 200px;
+            height: 30px;
+            color: #00b4d8;
+            text-align: center;
+            font-size: medium;
+        }
+        button{
+            background-color: #2dc653;
+            border: none;
+            padding: 20px 35px;
+            border-radius: 15px;
+            cursor: pointer;
+            color: #f4f4f4;
+            font-size: medium;
+            font-weight: 700;
+        }
+        button:hover{
+            background-color: #4ad66d;
+        }
+        a{
+            background-color: #03045e;
+            text-decoration: none;
+            color: #a5ffd6;
+            border-radius: 15px;
+            padding: 20px;
+            cursor: pointer;
+        }
+        a:hover{
+            background-color: #023e8a;
+        }
+        label{
+            color: #0466c8;
+            font-weight: 800;
+            font-size: large;
+        }
+</style>
+<body>
+    <h1>Editar Superheroe</h1>
+
+    <form action="/api/superheroes/editar/<%= superheroe._id %>?_method=put" method="post" class="heroes">
+        <div>
+            <label for="nombreSuperHeroe">Nombre del Superheroe:</label>
+            <br>
+            <input type="text" id="nombreSuperHeroe" name="nombreSuperHeroe" value="<%= superheroe.nombreSuperHeroe %>">
+        </div>
+
+        <div>
+            <label for="nombreReal">Nombre Real:</label>
+            <br>
+            <input type="text" id="nombreReal" name="nombreReal" value="<%= superheroe.nombreReal %>">
+        </div>
+
+        <div>
+            <label for="edad">Edad del Superheroe:</label>
+            <br>
+            <input type="number" id="edad" name="edad" value="<%= superheroe.edad %>">
+        </div>
+
+        <div>
+            <label for="planetaOrigen">Planeta de Origen:</label>
+            <br>
+            <input type="text" id="planetaOrigen" name="planetaOrigen" value="<%= superheroe.planetaOrigen %>">
+        </div>
+
+        <div>
+            <label for="debilidad">Debilidades:</label>
+            <br>
+            <% superheroe.debilidad.forEach(debilidad => { %>
+                <input type="text" id="debilidad[]" name="debilidad" value="<%= debilidad %>">
+            <% }) %>
+        </div>
+
+        <div>
+            <label for="poderes">Poderes:</label>
+            <br>
+            <% superheroe.poderes.forEach(poder => { %>
+                <input type="text" id="poderes[]" name="poderes" value="<%= poder %>">
+            <% }) %>
+        </div>
+
+        <div>
+            <label for="aliados">Aliados:</label>
+            <br>
+            <% superheroe.aliados.forEach(aliado => { %>
+                <input type="text" id="aliados[]" name="aliados" value="<%= aliado %>">
+            <% }) %>
+        </div>
+
+        <div>
+            <label for="enemigos">Enemigos:</label>
+            <br>
+            <% superheroe.enemigos.forEach(enemigo => { %>
+                <input type="text" id="enemigos[]" name="enemigos" value="<%= enemigo %>">
+            <% }) %>
+        </div>
+
+        <div>
+            <label for="creador">Creador</label>
+            <br>
+            <% superheroe.creador.forEach(creador => { %>
+                <input type="text" id="creador[]" name="creador" value="<%= creador %>">
+            <% }) %>
+        </div>
+
+        <div class="heroes1">
+            <a href="/api/superheroes">Volver a la lista</a>
+            <button type="submit">Enviar</button>
+        </div>
+    </form>
+</body>
+</html>

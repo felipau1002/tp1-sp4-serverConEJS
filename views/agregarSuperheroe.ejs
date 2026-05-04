@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Superheroe</title>
+    <style>
+        body{
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #001233;
+            color: #0466c8;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            margin: 0;
+        }
+        h1{
+            color: #f4f4f4;
+            text-align: center;
+            margin: 45px 0px;
+        }
+        .heroes{
+            background-color: #000814;
+            width: 500px;
+            text-align: center;
+            padding-bottom: 25px;
+            border-radius: 25px;
+            overflow: hidden;
+            padding: 30px 0px;
+        }
+        .heroes1{
+            display: flex;
+            justify-content: space-evenly;
+            margin-top: 25px;
+            border: none;
+            align-items: center;
+            margin-bottom: 0;
+        }
+        form > div{
+            margin-top: 25px;
+            margin-bottom: 40px;
+            border-bottom: 2px solid #0466c8;
+        }
+        input{
+            margin-top: 15px;
+            margin-bottom: 30px;
+            background-color: #03045e;
+            border: none;
+            width: 200px;
+            height: 30px;
+            color: #00b4d8;
+            text-align: center;
+            font-size: medium;
+        }
+        button{
+            background-color: #2dc653;
+            border: none;
+            padding: 20px 35px;
+            border-radius: 15px;
+            cursor: pointer;
+            color: #f4f4f4;
+            font-size: medium;
+            font-weight: 700;
+        }
+        button:hover{
+            background-color: #4ad66d;
+        }
+        label{
+            color: #0466c8;
+            font-weight: 800;
+            font-size: large;
+        }
+        input::placeholder{
+            color: #00b4d8;
+            opacity: 0.6;
+        }
+        a{
+            background-color: #03045e;
+            text-decoration: none;
+            color: #a5ffd6;
+            border-radius: 15px;
+            padding: 20px;
+            cursor: pointer;
+        }
+        a:hover{
+            background-color: #023e8a;
+        }
+        nav{
+            background-color: #001d3d;
+            padding: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        nav > img{
+            width: 50px;
+        }
+        nav > div{
+            display: flex;
+            gap: 35px;
+            margin-right: 10px;
+        }
+        nav > div > a{
+            text-decoration: none;
+            color: azure;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        nav > div > a:hover{
+            color: #0353a4;
+            background-color: #001233;
+        }
+        footer{
+            background-color: #001d3d;
+            padding-top: 50px;
+            padding-bottom: 25px;
+            text-align: center;
+            color: azure;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        footer > div{
+            display: flex;
+            margin-left: 20px;
+        }
+        footer > div > img{
+            width: 25px;
+        }
+        footer > div > p{
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Nuevo Superheroe</h1>
+
+    <form action="/api/superheroes/agregar" method="post" class="heroes">
+        <div>
+            <label for="nombreSuperHeroe">Nombre del Superheroe:</label>
+            <br>
+            <input type="text" id="nombreSuperHeroe" name="nombreSuperHeroe" required>
+        </div>
+
+        <div>
+            <label for="nombreReal">Nombre Real:</label>
+            <br>
+            <input type="text" id="nombreReal" name="nombreReal" required>
+        </div>
+
+        <div>
+            <label for="edad">Edad del Superheroe:</label>
+            <br>
+            <input type="number" id="edad" name="edad" required>
+        </div>
+
+        <div>
+            <label for="planetaOrigen">Planeta de Origen:</label>
+            <br>
+            <input type="text" id="planetaOrigen" name="planetaOrigen" required>
+        </div>
+
+        <div>
+            <label for="debilidad">Debilidades:</label>
+            <br>
+            <input type="text" id="debilidad[]" name="debilidad" required placeholder="Debilidad 1">
+            <input type="text" id="debilidad[]" name="debilidad" placeholder="Debilidad 2">
+            <input type="text" id="debilidad[]" name="debilidad" placeholder="Debilidad 3">
+        </div>
+
+        <div>
+            <label for="poderes">Poderes:</label>
+            <br>
+            <input type="text" id="poderes[]" name="poderes" required placeholder="Poder 1">
+            <input type="text" id="poderes[]" name="poderes" placeholder="Poder 2">
+            <input type="text" id="poderes[]" name="poderes" placeholder="Poder 3">
+        </div>
+
+        <div>
+            <label for="aliados">Aliados:</label>
+            <br>
+            <input type="text" id="aliados[]" name="aliados" required placeholder="Aliado 1">
+            <input type="text" id="aliados[]" name="aliados" placeholder="Aliado 2">
+            <input type="text" id="aliados[]" name="aliados" placeholder="Aliado 3">
+        </div>
+
+        <div>
+            <label for="enemigos">Enemigos:</label>
+            <br>
+            <input type="text" id="enemigos[]" name="enemigos" required placeholder="Enemigo 1">
+            <input type="text" id="enemigos[]" name="enemigos" placeholder="Enemigo 2">
+            <input type="text" id="enemigos[]" name="enemigos" placeholder="Enemigo 3">
+        </div>
+
+        <div>
+            <label for="creador">Creador</label>
+            <br>
+            <input type="text" id="creador[]" name="creador" required placeholder="Creador 1">
+            <input type="text" id="creador[]" name="creador" placeholder="Creador 2">
+        </div>
+
+        <div class="heroes1">
+            <a href="/api/superheroes">Volver a la lista</a>
+            <button type="submit">Enviar</button>
+        </div>
+    </form>
+    
+</body>
+</html>
