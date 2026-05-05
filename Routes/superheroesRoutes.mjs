@@ -8,6 +8,10 @@ import { validacionDeNombreSuperheroe, validacionDeNombreReal, validacionDeEdad,
 const router = express.Router();
 
 
+router.get('/inicio', (req, res) => {
+    res.render('inicio');
+})
+
 router.get('/superheroes', obtenerTodosLosSuperheroesController);
 
 

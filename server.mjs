@@ -4,6 +4,7 @@ import router from './Routes/superheroesRoutes.mjs';
 import dns from 'dns';
 import methodOverride from 'method-override';
 import expressLayouts from 'express-ejs-layouts';
+import path from 'path';
 
 dns.setServers(['8.8.8.8', '1.1.1.1']);
 
@@ -17,7 +18,7 @@ app.set('view engine', 'ejs');
 
 app.use(expressLayouts);
 app.set('layout', 'layout');
-
+app.use(express.static(path.resolve('./public')));
 
 app.use(express.urlencoded({ extended: true })); // Metodo para enviar formularios HTML
 app.use(methodOverride('_method')); // Metodo para enviar PUT en formularios HTML
